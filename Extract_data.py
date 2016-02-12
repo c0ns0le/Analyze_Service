@@ -7,6 +7,7 @@ Created on Jan 9, 2016
 import re 
 import csv
 import pandas as pd
+import json
 
 def column_counts(df,columns):
     """
@@ -16,11 +17,12 @@ def column_counts(df,columns):
     :return: None
     """
     for column in columns:
+        print("\nThe sorted individual counts from the column \"%s\":" %column)
         print(df[column].value_counts())
-        print(df[column].isnull().sum())
+        print("The count of Null value is %d\n" %(df[column].isnull().sum()))
         print("*"*50)
 
-def group_by_prdouct_situation(df):
+def group_by_product_situation(df):
     """
     Trying to group by Product and situation fields
     :param df: dataframe object for the input csv file
@@ -32,11 +34,22 @@ def group_by_prdouct_situation(df):
 
 def auto_close_analysis(df_autoclose):
     """
-    Alanysing auto close rows
+    Analysing auto close rows
     :param df_autoclose:
     :return:
     """
     print(df_autoclose)
+
+def user_requests(df_userrequest):
+    """
+    Analysing user requests
+    :param df_userrequest:
+    :return:
+    """
+    print(df_userrequest)
+
+def quick_analysis(df):
+    print(df.loc[~(df["short_description"].str.contains('AMQ DLQ') | df["short_description"].str.contains('AMQ BR0') | df["short_description"].str.contains('STORE')),"short_description"].value_counts())
 
 def read_analysis_csv(input_filename):
     """
@@ -45,12 +58,17 @@ def read_analysis_csv(input_filename):
     :return:
     """
     df=pd.read_csv(input_filename)
-#    column_counts(df,["opened_by","closed_by","u_business_service","u_situation","state"])
-#    group_by_prdouct_situation(df)
-    auto_close_analysis(df[df.closed_by.isin(['Netcool Integration','Opalis Admin'])])
+    quick_analysis(df)
+    #input_json=dict(json.loads(open('Middleware_analyse.json').read()))
+    #print(input_json("name"))
+    #    column_counts(df,["opened_by","closed_by","u_business_service","u_situation","state"])
+    #    group_by_product_situation(df)
+    #auto_close_analysis(df[df.closed_by.isin(['Netcool Integration','Opalis Admin'])])
+    #    user_requests(df[df.opened_by.isin(['Netcool Integration','Opalis Admin'])==False])
+
 
 if __name__ == '__main__':
 
-    input_filename="incident_working.csv"
+    input_filename="incident (3).csv"
     print("The input file is \t%s\n "  %input_filename)
     read_analysis_csv(input_filename)

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Maestro link Error",
+    "data": {
+      "tag": "maestro",
+      "keyword": "MAESTRO ALERT",
+      "sev": "",
+      "component": {
+        "store": false,
+        "dc": false,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Maestro",
+    "situation": "Healthcheck",
+    "comments": ""
+  },
+  {
+    "name": "Maestro Restarting",
+    "data": {
+      "tag": "maestro",
+      "keyword": "distmond:maestro:Error restarting",
+      "sev": "",
+      "component": {
+        "store": false,
+        "dc": false,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Maestro",
+    "situation": "Healthcheck",
+    "comments": ""
+  },
+  {
+    "name": "Maestro_message",
+    "data": {
+      "tag": "maestro",
+      "keyword": "Maestro_message",
+      "sev": "",
+      "component": {
+        "store": false,
+        "dc": false,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Maestro",
+    "situation": "Healthcheck",
+    "comments": ""
+  },
+  {
+    "name": "AMQ Depth High",
+    "data": {
+      "tag": "amq",
+      "keyword": "AMQ(.*)Depth high",
+      "sev": "",
+      "component": {
+        "store": true,
+        "dc": true,
+        "grid": true
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Messaging - Active MQ",
+    "situation": "Queue Operations",
+    "comments": ""
+  },
+  {
+    "name": "AMQ Service Interval",
+    "data": {
+      "tag": "amq",
+      "keyword": "AMQ(.*)Service interval",
+      "sev": "",
+      "component": {
+        "store": true,
+        "dc": true,
+        "grid": true
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Messaging - Active MQ",
+    "situation": "Queue Operations",
+    "comments": ""
+  },
+  {
+    "name": "AMQ BRK0 Down",
+    "data": {
+      "tag": "amq",
+      "keyword": "MQMON:  AMQ (.*) BRK0 Down",
+      "sev": "",
+      "component": {
+        "store": true,
+        "dc": true,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Messaging - Active MQ",
+    "situation": "Broker Health Check",
+    "comments": ""
+  },
+  {
+    "name": "WMQ Channel stop",
+    "data": {
+      "tag": "wmq",
+      "keyword": "CHANNEL:(.*)on(.*)MQRC_CHANNEL_STOPPED",
+      "sev": "",
+      "component": {
+        "store": false,
+        "dc": false,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Messaging - IBM MQ",
+    "situation": "Queue Manager Health Check",
+    "comments": ""
+  },
+  {
+    "name": "WMQ Channel retry",
+    "data": {
+      "tag": "wmq",
+      "keyword": "The Channel(.*)is in RETRYING Status",
+      "sev": "",
+      "component": {
+        "store": false,
+        "dc": false,
+        "grid": false
+      },
+      "noise": false,
+      "auto_close": true,
+      "chronic_issue": false,
+      "status": "None"
+    },
+    "product": "Messaging - IBM MQ",
+    "situation": "Queue Manager Health Check",
+    "comments": ""
+  }
+  ]
