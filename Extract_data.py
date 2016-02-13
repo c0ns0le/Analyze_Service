@@ -8,6 +8,7 @@ import re
 import csv
 import pandas as pd
 import json
+import matplotlib.pyplot as plt
 
 def column_counts(df,columns):
     """
@@ -49,7 +50,14 @@ def user_requests(df_userrequest):
     print(df_userrequest)
 
 def quick_analysis(df):
-    print(df.loc[~(df["short_description"].str.contains('AMQ DLQ') | df["short_description"].str.contains('AMQ BR0') | df["short_description"].str.contains('STORE')),"short_description"].value_counts())
+    #get the unique count of values based on keword matching
+    # df.loc[~(df["short_description"].str.contains('AMQ DLQ') | df["short_description"].str.contains('AMQ BR0') | df["short_description"].str.contains('STORE')),"short_description"].value_counts()
+    s=pd.to_datetime(df["opened_at"]).unique()
+    ts=pd.Series(1 ,index=s)
+    print(ts)
+    print(ts.resample('45Min',how="sum"))
+    df.plot(kind='bar')
+    plt.show()
 
 def read_analysis_csv(input_filename):
     """
@@ -69,6 +77,6 @@ def read_analysis_csv(input_filename):
 
 if __name__ == '__main__':
 
-    input_filename="incident (3).csv"
+    input_filename="working.csv"
     print("The input file is \t%s\n "  %input_filename)
     read_analysis_csv(input_filename)
