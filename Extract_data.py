@@ -54,9 +54,10 @@ def quick_analysis(df):
     # df.loc[~(df["short_description"].str.contains('AMQ DLQ') | df["short_description"].str.contains('AMQ BR0') | df["short_description"].str.contains('STORE')),"short_description"].value_counts()
     s=pd.to_datetime(df["opened_at"]).unique()
     ts=pd.Series(1 ,index=s)
-    print(ts)
-    print(ts.resample('45Min',how="sum"))
-    df.plot(kind='bar')
+    df_2=ts.resample('1H',how="sum").to_frame()
+    df_2.columns=['A']
+    print(df_2)
+    df_2.reset_index().plot(x='index', y='A',kind='bar')
     plt.show()
 
 def read_analysis_csv(input_filename):
